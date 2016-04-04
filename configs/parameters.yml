@@ -1,0 +1,7 @@
+parameters:
+    aws:
+        region: "eu-central-1"
+        version: "latest"
+    aws_credentials_profile: default
+    aws_credentials_path: "/home/user/.aws/credentials"
+    aws_application_name: ReplaceWithApplicationName

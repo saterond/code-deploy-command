@@ -1,0 +1,2 @@
+#!/bin/bash
+/var/www/html/project-root-dir/composer.phar install --no-dev --no-scripts --no-interaction --optimize-autoloader -d /var/www/html/project-root-dir

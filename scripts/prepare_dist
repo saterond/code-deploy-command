@@ -1,0 +1,23 @@
+#!/bin/bash
+rm -r dist 2> /dev/null
+
+mkdir dist
+cp composer.json dist/composer.json
+cp composer.lock dist/composer.lock
+
+mkdir dist/web
+cp web/.htaccess dist/web/.htaccess
+cp web/app.php dist/web/app.php
+cp web/favicon.ico dist/web/favicon.ico
+cp web/robots.txt dist/web/robots.txt
+
+cp -r src dist
+cp -r app dist
+
+cp app/config/appspec.yml dist/appspec.yml
+
+cp -r web/css dist/web
+cp -r web/fonts dist/web
+cp -r web/images dist/web
+cp -r web/img dist/web
+cp -r web/js dist/web

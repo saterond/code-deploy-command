@@ -1,0 +1,68 @@
+# This is an appspec.yml template file for use with AWS CodeDeploy.
+#   http://docs.aws.amazon.com/codedeploy/latest/userguide/app-spec-ref.html
+version: 0.0
+os: linux
+files:
+  - source: /src
+    destination: /var/www/html/project-root-dir/src
+  - source: /app
+    destination: /var/www/html/project-root-dir/app
+  - source: /web/css
+    destination: /var/www/html/project-root-dir/web/css
+  - source: /web/fonts
+    destination: /var/www/html/project-root-dir/web/fonts
+  - source: /web/images
+    destination: /var/www/html/project-root-dir/web/images
+  - source: /web/img
+    destination: /var/www/html/project-root-dir/web/img
+  - source: /web/js
+    destination: /var/www/html/project-root-dir/web/js
+  - source: /web/.htaccess
+    destination: /var/www/html/project-root-dir/web
+  - source: /web/app.php
+    destination: /var/www/html/project-root-dir/web
+  - source: /web/favicon.ico
+    destination: /var/www/html/project-root-dir/web
+  - source: /web/robots.txt
+    destination: /var/www/html/project-root-dir/web
+  - source: /composer.json
+    destination: /var/www/html/project-root-dir
+  - source: /composer.lock
+    destination: /var/www/html/project-root-dir
+permissions:
+  - object: /var/www/html/project-root-dir/src
+    owner: ssh-user
+    group: ssh-user
+  - object: /var/www/html/project-root-dir/app
+    owner: ssh-user
+    group: ssh-user
+  - object: /var/www/html/project-root-dir/web
+    owner: www-data
+    group: www-data
+  - object: /var/www/html/project-root-dir/composer.json
+    owner: ssh-user
+    group: ssh-user
+  - object: /var/www/html/project-root-dir/composer.lock
+    owner: ssh-user
+    group: ssh-user
+hooks:
+  ApplicationStop:
+#    - location:
+#      timeout:
+#      runas:
+#  BeforeInstall:
+#    - location:
+#      timeout:
+#      runas:
+  AfterInstall:
+    - location: scripts/prepare_environment
+      timeout: 300
+      runas: ssh-user
+  ApplicationStart:
+    - location: scripts/start_application
+      timeout: 300
+      runas: root
+#  ValidateService:
+#    - location:
+#      timeout:
+#      runas:
