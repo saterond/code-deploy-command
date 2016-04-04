@@ -14,7 +14,7 @@ cp web/robots.txt dist/web/robots.txt
 cp -r src dist
 cp -r app dist
 
-cp app/config/appspec.yml dist/appspec.yml
+cp configs/appspec.yml dist/appspec.yml
 
 cp -r web/css dist/web
 cp -r web/fonts dist/web

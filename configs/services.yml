@@ -1,0 +1,5 @@
+services:
+    command.deploy:
+        class: BaseBundle\Command\DeployCommand
+        tags:
+            - { name: console.command }
